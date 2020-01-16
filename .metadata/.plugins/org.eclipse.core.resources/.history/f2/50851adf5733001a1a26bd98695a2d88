@@ -1,0 +1,57 @@
+package swing;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.temporal.JulianFields;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+
+public class JProgressBarEx extends JFrame implements ActionListener, Runnable{
+	private JProgressBar jpb = new JProgressBar(JProgressBar.HORIZONTAL, 0, 100);
+	private JButton startBtn = new JButton("시작");
+	private JButton stopBtn = new JButton("멈춤");
+	
+
+	public JProgressBarEx() {
+		super("Test");
+		Container con = getContentPane();
+		con.setLayout(new BorderLayout());
+		con.add("North", new JLabel("이것이 프로그레스 바당..."));
+		con.add("Center", jpb);
+		jpb.setStringPainted(true);
+		jpb.setString("0%");
+		JPanel jp = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		jp.add(startBtn);
+		jp.add(stopBtn);
+		startBtn.addActionListener(this);
+		stopBtn.addActionListener(this);
+		con.add("South", jp);
+		setSize(300, 150);
+		setVisible(true);
+		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

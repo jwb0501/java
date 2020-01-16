@@ -1,0 +1,36 @@
+package swing;
+
+import java.awt.Container;
+import java.awt.Panel;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Timer extends JFrame{
+	private JButton startBtn, stopBtn;
+	
+	public Timer() {
+		startBtn = new JButton("Ω√¿€");
+		stopBtn = new JButton("∏ÿ√„");
+		
+		Panel p = new Panel();
+		p.add(startBtn);
+		p.add(stopBtn);
+		
+		Container con = this.getContentPane();
+		con.add("East", p);
+		
+		
+		
+		
+		setBounds(900, 300, 200, 200);
+		setVisible(true);
+		
+	}
+
+	public static void main(String[] args) {
+		new Timer();
+
+	}
+
+}

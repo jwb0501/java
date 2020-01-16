@@ -1,0 +1,10 @@
+package swing;
+
+public class ShapeDTO {
+	private int x1, y1, x2, y2, z1, z2;
+	//Ã¤¿ì±â 
+	private int shape;
+	private int fillColor;
+	
+
+}

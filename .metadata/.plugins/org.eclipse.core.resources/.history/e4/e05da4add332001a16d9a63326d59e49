@@ -1,0 +1,13 @@
+package rentcar;
+
+public class DataUtil {//데이터 암호와, 복호화 기능 클래스
+	
+	public static void encodeData(String data) {
+		System.out.println(data+"를 암호화합니다.");
+	}
+	
+	public static void decodeData(String data) {
+		System.out.println(data+"를 복호화합니다.");
+	}
+	
+}

@@ -1,0 +1,43 @@
+package thread;
+
+import java.awt.Frame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Scanner;
+
+public class RunRace extends Frame{
+	
+	private int count;
+	private String[] name;
+	
+	public RunRace(int count, String[] name) {
+		this.count = count;
+		this.name = name;
+		
+		setBounds(900, 200, 600, 500);
+		setVisible(true);
+		setResizable(false);
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		
+	}
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("경주마 수를 입력 : ");
+		int count = scan.nextInt();
+		
+		String[] name = new String[count]; 
+		for (int i = 0; i < count; i++) {
+			System.out.print("경주마 이름 입력 : ");
+			name[i] = scan.next();
+		}
+		
+		new RunRace(count, name); 
+	}
+
+}

@@ -1,0 +1,76 @@
+package swing;
+
+import java.awt.FlowLayout;
+import java.awt.Panel;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class JTableEx2 extends JFrame {
+	private ArrayList<PersonDTO> list;
+	private Vector<String> vector;
+	private DefaultTableModel model;
+	private JTable table;
+	private JButton addBtn, deleteBtn;
+	
+	public JTableEx2() {
+		list = new ArrayList<PersonDTO>();
+		list.add(new PersonDTO("hong","홍길동","111","010-123-1234"));
+		list.add(new PersonDTO("conan", "코난", "123", "010-234-2356"));
+		
+		//제목
+		vector = new Vector<String>();
+		vector.addElement("아이디");
+		vector.addElement("이름");
+		vector.add("비밀번호");
+		vector.add("핸드폰");
+		
+		model = new DefaultTableModel(vector,0) {
+			@Override
+			public boolean isCellEditable(int r, int c) {
+				return (c!=0)?true:false;
+			}
+		};//빈 행의 수를 만든다
+		
+		for(PersonDTO dto : list) {
+			Vector<String> v = new Vector<String>();
+			v.add(dto.getId());
+			v.add(dto.getName());
+			v.add(dto.getPwd());
+			v.add(dto.getTel());
+			
+			model.addRow(v);
+		}
+		
+		table = new JTable(model);
+		JScrollPane scroll = new JScrollPane(table);
+		
+		Panel p = new Panel(new FlowLayout(FlowLayout.RIGHT));
+		addBtn = new JButton("추가");
+		deleteBtn = new JButton("삭제");
+		p.add(addBtn);
+		p.add(deleteBtn);
+		
+		
+		
+		add("Center", scroll);
+		add("South", p);
+		
+		setBounds(900, 300, 500, 500);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new JTableEx2();
+	}
+
+}

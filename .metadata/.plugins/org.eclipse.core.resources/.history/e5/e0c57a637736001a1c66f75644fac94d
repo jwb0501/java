@@ -1,0 +1,32 @@
+package io;
+
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class TryNotepad extends JFrame{
+	private JTextArea area;
+	
+	public TryNotepad() {
+		
+		area = new JTextArea();
+		JScrollPane scroll = new JScrollPane(area);
+		
+		Container con = getContentPane();
+		con.add("Center", scroll);
+		
+		setTitle("간단 메모장");
+		setBounds(900, 200, 600, 500);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public static void main(String[] args) {
+		new TryNotepad();
+		
+
+	}
+
+}

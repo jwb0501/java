@@ -1,0 +1,39 @@
+package io;
+
+import java.awt.Container;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class TryNotepad extends JFrame{
+	private JTextArea area;
+	private MenuPane menu;
+	
+	public TryNotepad() {
+		
+		area = new JTextArea();
+		JScrollPane scroll = new JScrollPane(area);
+		area.setFont(new Font("고딕체", Font.PLAIN, 20));
+		
+		menu = new MenuPane();
+		this.setJMenuBar(menu);
+		
+		
+		Container con = getContentPane();
+		con.add(scroll);
+		
+		setTitle("간단 메모장");
+		setBounds(900, 200, 600, 500);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public static void main(String[] args) {
+		new TryNotepad();
+		
+
+	}
+
+}

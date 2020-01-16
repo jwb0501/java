@@ -1,0 +1,36 @@
+package thread;
+
+import java.awt.Frame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class Packman extends Frame {
+
+	public Packman() {
+		
+		
+		
+		
+		
+		
+		
+		
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		
+		setBounds(900, 200, 500, 500);
+		setVisible(true);
+		setResizable(false);
+	}
+
+	public static void main(String[] args) {
+		new Packman();
+
+	}
+
+}

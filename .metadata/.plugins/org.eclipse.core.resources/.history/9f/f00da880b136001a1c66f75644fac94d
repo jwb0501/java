@@ -1,0 +1,46 @@
+package io;
+
+import java.util.ArrayList;
+
+import javax.swing.JTextArea;
+
+public class Scorelmpl implements Score{
+	ArrayList<ScoreDTO> list = new ArrayList<ScoreDTO>();
+
+	@Override
+	public void input(ScoreDTO dto) {
+		list.add(dto);
+	}
+
+	@Override
+	public void print(JTextArea output) {
+		
+		
+	}
+
+	@Override
+	public void search(JTextArea output) {
+		
+		
+	}
+
+	@Override
+	public void tot_desc() {
+		
+		
+	}
+
+	@Override
+	public void save() {
+		
+		
+	}
+
+	@Override
+	public void load() {
+		
+		
+	}
+	
+	
+}

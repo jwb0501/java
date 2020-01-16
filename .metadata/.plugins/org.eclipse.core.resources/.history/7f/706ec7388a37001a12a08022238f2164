@@ -1,0 +1,19 @@
+package omok;
+
+import javax.swing.JFrame;
+
+public class OmokFrame extends JFrame {
+	
+	public OmokFrame() {
+		
+		
+		setBounds(800, 200, 500, 500);
+		setVisible(true);
+	}
+	
+	
+	public static void main(String[] args) {
+		new OmokFrame();
+	}
+
+}

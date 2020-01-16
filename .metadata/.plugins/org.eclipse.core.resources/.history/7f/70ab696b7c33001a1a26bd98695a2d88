@@ -1,0 +1,24 @@
+package swing;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Timer extends JFrame{
+	private JButton startBtn, stopBtn;
+	
+	public Timer() {
+		
+		
+		
+		
+		setBounds(900, 300, 200, 200);
+		setVisible(true);
+		
+	}
+
+	public static void main(String[] args) {
+		new Timer();
+
+	}
+
+}

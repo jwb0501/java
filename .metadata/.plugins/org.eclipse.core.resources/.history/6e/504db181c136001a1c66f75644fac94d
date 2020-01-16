@@ -1,0 +1,148 @@
+package io;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
+
+public class ScoreImpl implements Score {
+	ArrayList<ScoreDTO> list = new ArrayList<ScoreDTO>();
+	private Vector<String> vector;
+	private DefaultTableModel model;
+	private JTable table;
+	private File file;
+
+	@Override
+	public void input(ScoreDTO dto) {
+		list.add(dto);
+	}
+
+	@Override
+	public void print(JTable output) {
+		vector = new Vector<String>();
+		vector.add("학번");
+		vector.add("이름");
+		vector.add("국어");
+		vector.add("영어");
+		vector.add("수학");
+		vector.add("총점");
+		vector.add("평균");
+
+		model = new DefaultTableModel(vector, 0) {
+			@Override
+			public boolean isCellEditable(int r, int c) {
+				return (c != 0) ? true : false;
+			}
+		};// 빈 행의 수를 만든다
+
+		for (ScoreDTO dto : list) {
+			Vector<String> v = new Vector<String>();
+			v.add(dto.getHak());
+			v.add(dto.getName());
+			v.add(dto.getKor() + "");
+			v.add(dto.getEng() + "");
+			v.add(dto.getMat() + "");
+			v.add(dto.getTot() + "");
+			v.add(dto.getAvg() + "");
+
+			model.addRow(v);
+		}
+		output.setModel(model);
+
+	}
+
+	@Override
+	public void search(JTable output) {
+
+	}
+
+	@Override
+	public void tot_desc() {
+
+	}
+
+	@Override
+	public void save() {
+		JFileChooser chooser = new JFileChooser();
+		int result = chooser.showSaveDialog(table);
+
+		if (result == JFileChooser.APPROVE_OPTION) {
+			file = chooser.getSelectedFile();
+		}
+		if (file == null)
+			return;
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+			oos.writeObject(list);
+			
+			oos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void load(JTable output) {
+		JFileChooser chooser = new JFileChooser();
+		int result = chooser.showOpenDialog(table);
+
+		if (result == JFileChooser.APPROVE_OPTION) {
+			file = chooser.getSelectedFile();
+		}
+		if (file == null)
+			return;
+		
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+			ArrayList<ScoreDTO> list = (ArrayList<ScoreDTO>) ois.readObject();
+			vector = new Vector<String>();
+			vector.add("학번");
+			vector.add("이름");
+			vector.add("국어");
+			vector.add("영어");
+			vector.add("수학");
+			vector.add("총점");
+			vector.add("평균");
+
+			model = new DefaultTableModel(vector, 0) {
+				@Override
+				public boolean isCellEditable(int r, int c) {
+					return (c != 0) ? true : false;
+				}
+			};// 빈 행의 수를 만든다
+
+			for (ScoreDTO dto : list) {
+				Vector<String> v = new Vector<String>();
+				v.add(dto.getHak());
+				v.add(dto.getName());
+				v.add(dto.getKor() + "");
+				v.add(dto.getEng() + "");
+				v.add(dto.getMat() + "");
+				v.add(dto.getTot() + "");
+				v.add(dto.getAvg() + "");
+
+				model.addRow(v);
+			}
+			output.setModel(model);		
+			ois.close();
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

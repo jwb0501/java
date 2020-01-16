@@ -1,0 +1,21 @@
+package io;
+
+import javax.swing.JFrame;
+
+public class TryNotepad extends JFrame{
+	
+	public TryNotepad() {
+
+
+		setBounds(900, 200, 600, 500);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public static void main(String[] args) {
+		new TryNotepad();
+		
+
+	}
+
+}

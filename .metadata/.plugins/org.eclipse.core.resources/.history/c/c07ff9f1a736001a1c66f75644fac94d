@@ -1,0 +1,69 @@
+package io;
+
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.Panel;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class ScoreForm extends JFrame{
+	private JButton insertBtn, listBtn, serchBtn, sortBtn, saveBtn, openBtn;
+	private JLabel hakL, nameL, korL, engL, matL;
+	private JTextField hakT, nameT, korT, engT, matT;
+	private JTextArea area;
+	
+	
+	public ScoreForm() {
+		Panel westP = new Panel(new GridLayout(6, 2, 5, 30));
+		hakL = new JLabel("학번", JLabel.RIGHT); nameL = new JLabel("이름", JLabel.RIGHT);
+		korL = new JLabel("국어", JLabel.RIGHT); engL = new JLabel("영어", JLabel.RIGHT);
+		matL = new JLabel("수학", JLabel.RIGHT); 
+		hakT = new JTextField(15); nameT = new JTextField(15);
+		korT = new JTextField(15); engT = new JTextField(15);
+		matT = new JTextField(15);
+		westP.add(hakL); westP.add(hakT);
+		westP.add(nameL); westP.add(nameT);
+		westP.add(korL); westP.add(korT);
+		westP.add(engL); westP.add(engT);
+		westP.add(matL); westP.add(matT);
+		
+		
+		Panel eastP = new Panel();
+		area = new JTextArea(17, 30);
+		eastP.add(area);
+		
+		Panel southP = new Panel(new GridLayout(1, 6, 5, 0));
+		insertBtn = new JButton("입력");
+		listBtn = new JButton("출력");
+		serchBtn = new JButton("학번검색");
+		sortBtn = new JButton("순위");
+		saveBtn = new JButton("파일저장");
+		openBtn = new JButton("파일읽기");
+		southP.add(insertBtn);
+		southP.add(listBtn);
+		southP.add(serchBtn);
+		southP.add(sortBtn);
+		southP.add(saveBtn);
+		southP.add(openBtn);
+		
+		Container c = this.getContentPane();
+		c.add("West", westP);
+		c.add("East", eastP);
+		c.add("South", southP);
+		
+		setBounds(700, 200, 650, 400);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+	}
+
+	public static void main(String[] args) {
+		new ScoreForm();
+
+	}
+
+}

@@ -1,0 +1,51 @@
+package swing;
+
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class JTableEx2 extends JFrame {
+	private ArrayList<PersonDTO> list;
+	private Vector<String> vector;
+	private DefaultTableModel model;
+	private JTable table;
+	
+	public JTableEx2() {
+		list = new ArrayList<PersonDTO>();
+		list.add(new PersonDTO("hong","홍길동","111","010-123-1234"));
+		list.add(new PersonDTO("coana", "코난", "123", "010-234-2356"));
+		
+		//제목
+		vector = new Vector<String>();
+		vector.addElement("아이디");
+		vector.addElement("이름");
+		vector.add("비밀번호");
+		vector.add("핸드폰");
+		
+		model = new DefaultTableModel(vector,0) {
+			@Override
+			public boolean isCellEditable(int r, int c) {
+				return (c!=0)?true:false;
+			}
+		};//빈 행의 수를 만든다
+		
+		table = new JTable(model);
+		JScrollPane scroll = new JScrollPane(table);
+		
+		add("Center", scroll);
+		
+		setVisible(true);
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new JTableEx2();
+	}
+
+}

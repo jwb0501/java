@@ -1,0 +1,17 @@
+package swing;
+
+import java.util.ArrayList;
+
+public class JTableEx2 {
+	private ArrayList<PersonDTO> list;
+	
+	public JTableEx2() {
+		list = new ArrayList<PersonDTO>();
+		list.add(new per)
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}

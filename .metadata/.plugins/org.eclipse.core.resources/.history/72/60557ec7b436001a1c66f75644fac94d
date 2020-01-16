@@ -1,0 +1,50 @@
+package io;
+
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
+public class ScoreImpl implements Score{
+	ArrayList<ScoreDTO> list = new ArrayList<ScoreDTO>();
+
+	@Override
+	public void input(ScoreDTO dto) {
+		list.add(dto);
+	}
+
+	@Override
+	public void print(JTextArea output) {
+		
+		for(ScoreDTO dto : list) {
+			output.setText(dto.toString());
+		}
+		
+	}
+
+	@Override
+	public void search(JTextArea output) {
+		
+		
+	}
+
+	@Override
+	public void tot_desc() {
+		
+		
+	}
+
+	@Override
+	public void save() {
+		
+		
+	}
+
+	@Override
+	public void load() {
+		
+		
+	}
+	
+	
+}

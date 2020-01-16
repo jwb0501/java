@@ -1,0 +1,26 @@
+package thread;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+
+public class Racer extends Canvas implements Runnable{//¸» 1¸¶¸®
+	
+	public Racer() {
+		
+	}
+	@Override
+	public void paint(Graphics g) {
+		Image img = Toolkit.getDefaultToolkit().getImage("horse.gif");
+		g.drawLine(0, this.getHeight()/2, this.getWidth() , this.getHeight()/2);
+		g.drawImage(img, 0, 0, 50, this.getHeight(), this);	
+	}
+	@Override
+	public void run() {
+		
+		
+	}
+
+}

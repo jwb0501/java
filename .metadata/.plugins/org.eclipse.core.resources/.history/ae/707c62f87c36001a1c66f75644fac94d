@@ -1,0 +1,74 @@
+package io;
+
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class TryNotepad extends JFrame implements ActionListener{
+	private JTextArea area;
+	private MenuPane menu;
+	
+	public TryNotepad() {
+		
+		area = new JTextArea();
+		JScrollPane scroll = new JScrollPane(area);
+		area.setFont(new Font("고딕체", Font.BOLD, 20));
+		
+		menu = new MenuPane();
+		this.setJMenuBar(menu);
+		
+		
+		Container con = getContentPane();
+		con.add(scroll);
+		
+		this.event();
+		
+		setTitle("간단 메모장");
+		setBounds(900, 200, 600, 500);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void event() {
+		menu.getNewM().addActionListener(this);
+		menu.getOpenM().addActionListener(this);
+		menu.getSaveM().addActionListener(this);
+		menu.getExitM().addActionListener(this);
+		menu.getCutM().addActionListener(this);
+		menu.getCopyM().addActionListener(this);
+		menu.getPasteM().addActionListener(this);
+	
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("새로만들기")) {
+			area.setText("");
+		}else if(e.getActionCommand().equals("열기")) {
+			
+		}else if(e.getActionCommand().equals("저장")) {
+			
+		}else if(e.getActionCommand().equals("종료")) {
+			System.exit(0);	
+		}else if(e.getActionCommand().equals("잘라내기")) {
+			area.cut();
+		}else if(e.getActionCommand().equals("복사")) {
+			area.copy();
+		}else if(e.getActionCommand().equals("붙여넣기")) {
+			area.paste();
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		new TryNotepad();
+		
+		
+	}
+}

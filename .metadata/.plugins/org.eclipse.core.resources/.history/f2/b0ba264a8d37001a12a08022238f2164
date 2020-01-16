@@ -1,0 +1,31 @@
+package omok;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+
+public class OmokFrame extends JFrame {
+	
+	public OmokFrame() {
+		
+		JPanel p = new JPanel(new GridLayout(20, 20));
+		LineBorder lb = new LineBorder(Color.BLACK, 1);
+		p.setBorder(lb);
+		
+		Container c = this.getContentPane();
+		c.add(p);
+		
+		setBounds(600, 100, 900, 900);
+		setVisible(true);
+	}
+	
+	
+	public static void main(String[] args) {
+		new OmokFrame();
+	}
+
+}

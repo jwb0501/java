@@ -1,0 +1,65 @@
+package io;
+
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.Panel;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class ScoreForm extends JFrame{
+	private JButton insertBtn, listBtn, serchBtn, sortBtn, saveBtn, openBtn;
+	private JLabel hakL, nameL, korL, engL, matL;
+	private JTextField hakT, nameT, korT, engT, matT;
+	private JTextArea area;
+	
+	
+	public ScoreForm() {
+		hakL = new JLabel("학번"); nameL = new JLabel("이름");
+		korL = new JLabel("국어"); engL = new JLabel("영어");
+		matL = new JLabel("수학"); 
+		hakT = new JTextField(20); nameT = new JTextField(20);
+		korT = new JTextField(20); engT = new JTextField(20);
+		matT = new JTextField(20);
+		
+		Panel eastP = new Panel();
+		area = new JTextArea(16, 30);
+		eastP.add(area);
+		
+		
+		
+		
+		
+		insertBtn = new JButton("입력");
+		listBtn = new JButton("출력");
+		serchBtn = new JButton("학번검색");
+		sortBtn = new JButton("순위");
+		saveBtn = new JButton("파일저장");
+		openBtn = new JButton("파일읽기");
+		Panel southP = new Panel(new GridLayout(1, 6, 5, 0));
+		southP.add(insertBtn);
+		southP.add(listBtn);
+		southP.add(serchBtn);
+		southP.add(sortBtn);
+		southP.add(saveBtn);
+		southP.add(openBtn);
+		
+		Container c = this.getContentPane();
+		c.add("East", eastP);
+		c.add("South", southP);
+		
+		setBounds(700, 200, 650, 400);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+	}
+
+	public static void main(String[] args) {
+		new ScoreForm();
+
+	}
+
+}
